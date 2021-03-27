@@ -17,13 +17,15 @@ function buyIceCream(){
         info:'Second redux action'
     }
 }
-// Single Reducer
-const initialState = {
-    numOfCakes : 10,
+
+const initialCakeState = {
+    numOfCakes : 10
+}
+const initialIceCreamState = {
     numOfIceCreams : 20
 }
 
-const reducer = (state = initialState, action) =>{
+const CakeReducer = (state = initialCakeState, action) =>{
     switch(action.type){
         case BUY_CAKE:
             return{
@@ -39,7 +41,17 @@ const reducer = (state = initialState, action) =>{
             return state
     }
 }
-
+const IceCreamReducer = (state = initialIceCreamState, action) =>{
+    switch(action.type){
+        case BUY_ICECREAM:
+            return{
+                ...state,
+                numOfIceCreams: state.numOfIceCreams-1
+            }
+        default:
+            return state
+    }
+}
 
 const store = createStore(reducer)
 console.log('Initial State ',store.getState())
