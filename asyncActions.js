@@ -60,7 +60,7 @@ const fetchUsers = ()=>{
         axios.get('https://jsonplaceholder.typicode.com/users')
         .then(response =>{
             // response.data is the array of users
-            const users = response.data.map(user => user.id)
+            const users = response.data.map(user => user.id+' : '+ user.name)
             dispatch(fetchUsersSuccess(users))
         })
         .catch(error =>{
